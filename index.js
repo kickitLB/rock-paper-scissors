@@ -1,51 +1,99 @@
-
 // function that returns a random value of rock paper or scissors
 function computerPlays() {
-    const computerInput = ['rock', 'paper', 'scissors'];
-    const computerSelection = computerInput[Math.floor(Math.random() * computerInput.length)]; 
-    return computerSelection;
+    const computerChoices = ['rock', 'paper', 'scissors'];
+    const computerInput = computerChoices[Math.floor(Math.random() * computerChoices.length)]; 
+    return computerInput;
 }
-// computerPlays();
-// console.log(computerPlays());
 
+const computerSelection = computerPlays();
+console.log(computerSelection);
 
-// stores the value of rock paper or scissors inside playerSelection
-const playerSelection = prompt('Rock, Paper, or Scissors?');
+// players choice
+const playerSelection = prompt('Rock, Paper or Scissors?')
+console.log(playerSelection);
 
-
-function rules() {
-    computerPlays();
-    console.log(computerPlays());
-    if (computerPlays() === 'rock') {
-        if (computerPlays() === 'rock' && playerSelection == 'paper') {
-            alert('You win! Paper beats rock!');
-        } else if (computerPlays() ==='rock' && playerSelection == 'scissors') {
-            alert('You lose! Rock beats scissors');
-        } else if (computerPlays() === 'rock' && playerSelection == 'rock') {
-            alert('draw');
+// plays a single round of rock paper scissors
+function playRound(playerSelection, computerSelection) {
+    // if player and computer chose the same input alert draw
+    if (computerSelection == playerSelection) {
+        alert('draw');
+    
+    // scenario for rock
+    } else if (computerSelection == 'rock') {
+        if (playerSelection == 'paper') {
+            alert('you win! Computer chose rock!');
+        } else if(playerSelection == 'scissors') {
+            alert('You lose! Computer chose rock!');
         }
-    } else if (computerPlays() === 'paper') {
-        if (computerPlays() === 'paper' && playerSelection == 'scissors') {
-            alert('You win! Scissors beats paper!');
-        } else if (computerPlays() === 'paper' && playerSelection == 'rock') {
-            alert('You lose! Paper beats scissors!');
-        } else if (computerPlays() === 'paper' && playerSelection == 'paper') {
-            alert('draw');
+    
+    // scenerio for paper
+    } else if (computerSelection == 'paper') {
+        if ( playerSelection == 'scissors') {
+            alert('You win! Computer chose paper!');
+        } else if (playerSelection == 'rock') {
+            alert('You lose! Computer chose paper!');
         }
-    }else if (computerPlays() === 'scissors') {
-        if (computerPlays() === 'scissors' && playerSelection == 'rock') {
-            alert('You win! Rock beats scissors!'); 
-        } else if (computerPlays() === 'scissors' && playerSelection == 'paper') {
-            alert('You lose! Scissors beats paper!');
-        } else if (computerPlays() === 'scissors' && playerSelection == 'scissors') {
-            alert('draw');
+    
+    // scenerio for scissors
+    }else if (computerSelection == 'scissors') {
+        if (playerSelection == 'rock') {
+            alert('You win! Computer chose scissors!');
+        } else if (playerSelection = 'paper') {
+            alert('You lose! Computer chose scissors!');
         }
-    } else {
-        alert('error');
     }
-    console.log(playerSelection);
 }
-rules();
+
+playRound (playerSelection, computerSelection);
+
+
+// // function that returns a random value of rock paper or scissors
+// function computerPlays() {
+//     const computerInput = ['rock', 'paper', 'scissors'];
+//     const computerSelection = computerInput[Math.floor(Math.random() * computerInput.length)]; 
+//     return computerSelection;
+// }
+// // computerPlays();
+// // console.log(computerPlays());
+
+
+// // stores the value of rock paper or scissors inside playerSelection
+// const playerSelection = prompt('Rock, Paper, or Scissors?');
+
+
+// function rules() {
+//     computerPlays();
+//     console.log(computerPlays());
+//     if (computerPlays() === 'rock') {
+//         if (computerPlays() === 'rock' && playerSelection == 'paper') {
+//             alert('You win! Paper beats rock!');
+//         } else if (computerPlays() ==='rock' && playerSelection == 'scissors') {
+//             alert('You lose! Rock beats scissors');
+//         } else if (computerPlays() === 'rock' && playerSelection == 'rock') {
+//             alert('draw');
+//         }
+//     } else if (computerPlays() === 'paper') {
+//         if (computerPlays() === 'paper' && playerSelection == 'scissors') {
+//             alert('You win! Scissors beats paper!');
+//         } else if (computerPlays() === 'paper' && playerSelection == 'rock') {
+//             alert('You lose! Paper beats scissors!');
+//         } else if (computerPlays() === 'paper' && playerSelection == 'paper') {
+//             alert('draw');
+//         }
+//     }else if (computerPlays() === 'scissors') {
+//         if (computerPlays() === 'scissors' && playerSelection == 'rock') {
+//             alert('You win! Rock beats scissors!'); 
+//         } else if (computerPlays() === 'scissors' && playerSelection == 'paper') {
+//             alert('You lose! Scissors beats paper!');
+//         } else if (computerPlays() === 'scissors' && playerSelection == 'scissors') {
+//             alert('draw');
+//         }
+//     } else {
+//         alert('error');
+//     }
+//     console.log(playerSelection);
+// }
+// rules();
 
 
 // // rules defining rock priority

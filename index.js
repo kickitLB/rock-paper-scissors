@@ -8,9 +8,14 @@ function computerPlays() {
 const computerSelection = computerPlays();
 console.log(computerSelection);
 
-// players choice
-const playerSelection = prompt('Rock, Paper or Scissors?')
-console.log(playerSelection);
+// asks the player a prompt and converts the string to lowercase
+function userPlays() {
+    let message = prompt('Rock, Paper or Scissors?');
+    let input = message.toLowerCase();
+    return input;
+}
+
+const playerSelection = userPlays();
 
 // plays a single round of rock paper scissors
 function playRound(playerSelection, computerSelection) {

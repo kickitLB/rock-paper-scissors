@@ -1,148 +1,97 @@
 // function that returns a random value of rock paper or scissors
 function computerPlays() {
     const computerChoices = ['rock', 'paper', 'scissors'];
-    const computerInput = computerChoices[Math.floor(Math.random() * computerChoices.length)]; 
+    const computerInput = computerChoices[Math.floor(Math.random() * 3)]; 
     return computerInput;
 }
 
-const computerSelection = computerPlays();
-console.log(computerSelection);
-
-// asks the player a prompt and converts the string to lowercase
-function userPlays() {
-    let message = prompt('Rock, Paper or Scissors?');
-    let input = message.toLowerCase();
-    return input;
-}
-
-const playerSelection = userPlays();
-
 // plays a single round of rock paper scissors
 function playRound(playerSelection, computerSelection) {
-    // if player and computer chose the same input alert draw
-    if (computerSelection == playerSelection) {
-        alert('draw');
+    // if player and computer choose the same input alert draw
+    if (computerSelection == playerSelection.toLowerCase()) {
+        alert('Draw!');
     
     // scenario for rock
     } else if (computerSelection == 'rock') {
-        if (playerSelection == 'paper') {
+
+        // player chooses paper against rock
+        if (playerSelection.toLowerCase() == 'paper') {
+            playerScore++;
             alert('you win! Computer chose rock!');
-        } else if(playerSelection == 'scissors') {
+            
+        // player chooses scissors against rock 
+        } else if(playerSelection.toLowerCase() == 'scissors') {
+            computerScore++;
             alert('You lose! Computer chose rock!');
+
+        // player enters an invalid value 
+        } else if (playerSelection.toLowerCase() != 'rock' && playerSelection.toLowerCase() != 'paper' && playerSelection.toLowerCase() != 'scissors') {
+            alert('it\'s case insensitive but you still gotta write it right!');
         }
     
     // scenerio for paper
     } else if (computerSelection == 'paper') {
-        if ( playerSelection == 'scissors') {
+
+        // player chooses scissors against paper 
+        if ( playerSelection.toLowerCase() == 'scissors') {
+            playerScore++;
             alert('You win! Computer chose paper!');
-        } else if (playerSelection == 'rock') {
+            
+        // player chooses rock against paper 
+        } else if (playerSelection.toLowerCase() == 'rock') {
+            computerScore++;
             alert('You lose! Computer chose paper!');
-        }
+            
+        // player enters an invalid value
+        } else if (playerSelection.toLowerCase() != 'rock' && playerSelection.toLowerCase() != 'paper' && playerSelection.toLowerCase() != 'scissors') {
+            alert('it\'s case insensitive but you still gotta write it right!');
+        }    
     
     // scenerio for scissors
-    }else if (computerSelection == 'scissors') {
-        if (playerSelection == 'rock') {
+    } else if (computerSelection == 'scissors') {
+
+        // player chooses rock against scissors
+        if (playerSelection.toLowerCase() == 'rock') {
+            playerScore++;
             alert('You win! Computer chose scissors!');
-        } else if (playerSelection = 'paper') {
+            
+        // player chooses paper against scissors
+        } else if (playerSelection.toLowerCase() == 'paper') {
+            computerScore++;
             alert('You lose! Computer chose scissors!');
+
+        // player enters an invalid value
+        }else if (playerSelection.toLowerCase() != 'rock' && playerSelection.toLowerCase() != 'paper' && playerSelection.toLowerCase() != 'scissors') {
+            alert('it\'s case insensitive but you still gotta write it right!');
+        }
+    } 
+}
+
+// best out of five
+function game() {
+    // game starts at round 0, will go on for an infinite amount of time, every iteration round increases
+    for (i = 0; i = Infinity; i++) {
+        
+        let playerSelection = prompt('Rock, Paper, Scissors Shoot!');
+        let computerSelection = computerPlays();
+        
+        playRound(playerSelection, computerSelection);
+        alert(`CPU Score: ${computerScore}` + ' ' + `Player Score: ${playerScore}` );
+        
+        // breaks the loop if computer reaches 3 wins
+        if (computerScore === 3) {
+            alert('Game Over: You lose!');
+            break;
+
+        // breaks the loop if player reaches 3 wins
+        } else if (playerScore === 3) {
+            alert ('Game Over: You Win!');
+            break;
         }
     }
 }
 
-playRound (playerSelection, computerSelection);
+let computerScore = parseInt(0);
+let playerScore = parseInt(0);
 
-
-// // function that returns a random value of rock paper or scissors
-// function computerPlays() {
-//     const computerInput = ['rock', 'paper', 'scissors'];
-//     const computerSelection = computerInput[Math.floor(Math.random() * computerInput.length)]; 
-//     return computerSelection;
-// }
-// // computerPlays();
-// // console.log(computerPlays());
-
-
-// // stores the value of rock paper or scissors inside playerSelection
-// const playerSelection = prompt('Rock, Paper, or Scissors?');
-
-
-// function rules() {
-//     computerPlays();
-//     console.log(computerPlays());
-//     if (computerPlays() === 'rock') {
-//         if (computerPlays() === 'rock' && playerSelection == 'paper') {
-//             alert('You win! Paper beats rock!');
-//         } else if (computerPlays() ==='rock' && playerSelection == 'scissors') {
-//             alert('You lose! Rock beats scissors');
-//         } else if (computerPlays() === 'rock' && playerSelection == 'rock') {
-//             alert('draw');
-//         }
-//     } else if (computerPlays() === 'paper') {
-//         if (computerPlays() === 'paper' && playerSelection == 'scissors') {
-//             alert('You win! Scissors beats paper!');
-//         } else if (computerPlays() === 'paper' && playerSelection == 'rock') {
-//             alert('You lose! Paper beats scissors!');
-//         } else if (computerPlays() === 'paper' && playerSelection == 'paper') {
-//             alert('draw');
-//         }
-//     }else if (computerPlays() === 'scissors') {
-//         if (computerPlays() === 'scissors' && playerSelection == 'rock') {
-//             alert('You win! Rock beats scissors!'); 
-//         } else if (computerPlays() === 'scissors' && playerSelection == 'paper') {
-//             alert('You lose! Scissors beats paper!');
-//         } else if (computerPlays() === 'scissors' && playerSelection == 'scissors') {
-//             alert('draw');
-//         }
-//     } else {
-//         alert('error');
-//     }
-//     console.log(playerSelection);
-// }
-// rules();
-
-
-// // rules defining rock priority
-// function rock() {
-//     if (computerPlays() == 'rock' && playerSelection == 'paper') {
-//         alert('You win! Paper beats rock!');
-//     } else if (computerPlays() == 'rock' && playerSelection == 'scissors') {
-//         alert('You lose! Rock beats scissors!');
-//     } else {
-
-//     }
-// }
-
-// // rules defining paper priority
-// function paper() {
-//     if (computerPlays() == 'paper' && playerSelection == 'scissors') {
-//         alert('You win! Scissors beats paper!')
-//     } else if (computerPlays() == 'paper' && playerSelection == 'rock') {
-//         alert('You lose! Paper beats rock!');
-//     } else {
-
-//     }
-// }
-
-// // rules defining scissors priority 
-// function scissors() {
-//     if (computerPlays() == 'scissors' && playerSelection == 'rock') {
-//         alert('You win! Rock beats scissors!');
-//     } else if (computerPlays() == 'scissors' && playerSelection == 'paper') {
-//         alert('You lose! Scissors beats paper!');
-//     } else {
-
-//     }
-// }
-
-// function round() {
-//     if (rock(), paper(), scissors() == true) {
-
-//     } else if ( computerPlays() == playerSelection) {
-//         alert('draw');
-//     } else if (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
-//         alert('invalid input');
-//     }
-// }
-
-
-// round();
+game();

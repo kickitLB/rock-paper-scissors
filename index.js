@@ -78,13 +78,13 @@ function game() {
         playRound(playerSelection, computerSelection);
         alert(`CPU Score: ${computerScore}` + ' ' + `Player Score: ${playerScore}` );
         
-        // breaks the loop if computer reaches 3 wins
-        if (computerScore === 3) {
+        // breaks the loop if computer reaches 5 wins
+        if (computerScore === 5) {
             alert('Game Over: You lose!');
             break;
 
-        // breaks the loop if player reaches 3 wins
-        } else if (playerScore === 3) {
+        // breaks the loop if player reaches 5 wins
+        } else if (playerScore === 5) {
             alert ('Game Over: You Win!');
             break;
         }

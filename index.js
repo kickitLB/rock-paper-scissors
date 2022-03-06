@@ -1,97 +1,68 @@
-// function that returns a random value of rock paper or scissors
+'use strict';
+
+let playerScore = 0;
+let computerScore = 0;
+
 function computerPlays() {
-    const computerChoices = ['rock', 'paper', 'scissors'];
-    const computerInput = computerChoices[Math.floor(Math.random() * 3)]; 
-    return computerInput;
+    let choices = ['rock', 'paper', 'scissors'];
+    let random = Math.floor( Math.random() * choices.length);
+    return choices[random];
 }
 
-// plays a single round of rock paper scissors
-function playRound(playerSelection, computerSelection) {
-    // if player and computer choose the same input alert draw
-    if (computerSelection == playerSelection.toLowerCase()) {
-        alert('Draw!');
-    
-    // scenario for rock
-    } else if (computerSelection == 'rock') {
-
-        // player chooses paper against rock
-        if (playerSelection.toLowerCase() == 'paper') {
-            playerScore++;
-            alert('you win! Computer chose rock!');
-            
-        // player chooses scissors against rock 
-        } else if(playerSelection.toLowerCase() == 'scissors') {
-            computerScore++;
-            alert('You lose! Computer chose rock!');
-
-        // player enters an invalid value 
-        } else if (playerSelection.toLowerCase() != 'rock' && playerSelection.toLowerCase() != 'paper' && playerSelection.toLowerCase() != 'scissors') {
-            alert('it\'s case insensitive but you still gotta write it right!');
+function playRounds(playerSelection, computerSelection) {
+    let playerChoice = playerSelection.toLowerCase();
+    if (playerChoice === computerSelection) {
+        return 'round draw';
+    } else if (playerChoice === 'rock') {
+        if (computerSelection === 'scissors') {
+            return 'round win';
+        } else {
+            return 'round lose';
         }
-    
-    // scenerio for paper
-    } else if (computerSelection == 'paper') {
-
-        // player chooses scissors against paper 
-        if ( playerSelection.toLowerCase() == 'scissors') {
-            playerScore++;
-            alert('You win! Computer chose paper!');
-            
-        // player chooses rock against paper 
-        } else if (playerSelection.toLowerCase() == 'rock') {
-            computerScore++;
-            alert('You lose! Computer chose paper!');
-            
-        // player enters an invalid value
-        } else if (playerSelection.toLowerCase() != 'rock' && playerSelection.toLowerCase() != 'paper' && playerSelection.toLowerCase() != 'scissors') {
-            alert('it\'s case insensitive but you still gotta write it right!');
-        }    
-    
-    // scenerio for scissors
-    } else if (computerSelection == 'scissors') {
-
-        // player chooses rock against scissors
-        if (playerSelection.toLowerCase() == 'rock') {
-            playerScore++;
-            alert('You win! Computer chose scissors!');
-            
-        // player chooses paper against scissors
-        } else if (playerSelection.toLowerCase() == 'paper') {
-            computerScore++;
-            alert('You lose! Computer chose scissors!');
-
-        // player enters an invalid value
-        }else if (playerSelection.toLowerCase() != 'rock' && playerSelection.toLowerCase() != 'paper' && playerSelection.toLowerCase() != 'scissors') {
-            alert('it\'s case insensitive but you still gotta write it right!');
+    } else if (playerChoice === 'paper') {
+        if (computerSelection === 'rock') {
+            return 'round win';
+        } else {
+            return 'round lose';
         }
-    } 
-}
-
-// best out of five
-function game() {
-    // game starts at round 0, will go on for an infinite amount of time, every iteration round increases
-    for (i = 0; i = Infinity; i++) {
-        
-        let playerSelection = prompt('Rock, Paper, Scissors Shoot!');
-        let computerSelection = computerPlays();
-        
-        playRound(playerSelection, computerSelection);
-        alert(`CPU Score: ${computerScore}` + ' ' + `Player Score: ${playerScore}` );
-        
-        // breaks the loop if computer reaches 5 wins
-        if (computerScore === 5) {
-            alert('Game Over: You lose!');
-            break;
-
-        // breaks the loop if player reaches 5 wins
-        } else if (playerScore === 5) {
-            alert ('Game Over: You Win!');
-            break;
+    } else if (playerChoice === 'scissors') {
+        if (computerSelection === 'paper'){
+            return 'round win';
+        } else {
+            return 'round lose';
         }
     }
+    
 }
 
-let computerScore = parseInt(0);
-let playerScore = parseInt(0);
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt('choices');
+        let computerSelection = computerPlays();
+        alert(`Computer selects: ${computerSelection}!`);
+        playRounds(playerSelection, computerSelection);
+        
+        if (playRounds(playerSelection, computerSelection) === 'round win') {
+            playerScore += 1;
+            alert(`Player score: ${playerScore} Computer score: ${computerScore}`);
+            continue;
+        } else if (playRounds(playerSelection, computerSelection) === 'round lose') {
+            computerScore += 1;
+            alert(`Player score: ${playerScore} Computer score: ${computerScore}`);
+            continue;
+        } else {
+            alert('Round Draw');
+        }
+    }
+
+    if (`${playerScore} > ${computerScore}`) {
+        return 'game win';
+    } else if (`${playerScore} < ${computerScore}`) {
+        return 'game lose';
+    } else if (`${playerScore} === ${computerScore}`) {
+        return 'game draw';
+    }
+    
+}
 
 game();

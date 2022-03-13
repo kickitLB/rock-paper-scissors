@@ -5,8 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <script src='/index.js'></script>
+    <main>
+        <div class="information">
+            <div class="score">
+                <p id="playerScore" >Player Score: 0</p>
+                <p id="computerScore" >CPU Score: 0</p>
+            </div>
+            <p id="game" >Round 1</p>
+        </div>
+        <div class="versus">
+            <div>
+                <p>Player</p>
+                <img src="" alt="" srcset="">
+            </div>
+            <p>VS</p>
+            <div>
+                <p>CPU</p>
+                <img src="" alt="" srcset="">
+            </div>
+        </div>
+        <div class="playerSelect">
+            <!-- <button class="buttons" id="rock" type="submit">Rock</button>
+            <button class="buttons" id ='paper' type="submit">Paper</button>
+            <button class="buttons" id="scissors" type="submit">Scissors</button> -->
+            <img id="rock" src="/imgs/rock.svg" alt="Rock" srcset="">
+            <img id="paper" src="/imgs/paper.svg" alt="Paper" srcset="">
+            <img id="scissors" src="/imgs/scissors.svg" alt="Scissors" srcset="">
+        </div>
+    </main>
+    <script src='/index.js' defer></script>
 </body>
 </html>
